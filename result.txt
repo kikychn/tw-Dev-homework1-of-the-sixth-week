@@ -37,3 +37,19 @@ practice3
 +-------------+-----------+
 | tengxun     | 8000.0000 |
 +-------------+-----------+
+
+practice4
+查询语句：mysql> SELECT e.*, t.companyName, t.avgsal
+         -> FROM employee AS e
+         -> INNER JOIN (
+         ->          SELECT e2.companyId, c.companyName, AVG(salary) AS avgsal
+         ->          FROM employee AS e2, company AS c
+         ->          WHERE e2.companyId=c.Id
+         ->          GROUP BY e2.companyId) AS t
+         -> ON t.companyId=e.companyId AND e.salary>t.avgsal;
++----+----------+------+--------+-----------+--------+-------------+-----------+
+| id | name     | age  | gender | companyId | salary | companyName | avgsal    |
++----+----------+------+--------+-----------+--------+-------------+-----------+
+|  0 | xiaoming |   20 | male   |         0 |   6000 | baidu       | 3200.0000 |
+|  1 | xiaohong |   19 | female |         1 |   7000 | alibaba     | 6500.0000 |
++----+----------+------+--------+-----------+--------+-------------+-----------+
