@@ -10,7 +10,7 @@ practice2
 查询语句：mysql> SELECT company.companyName, employee.name
          -> FROM company, employee
          -> WHERE employee.companyId=company.Id
-         -> AND employee.salary=(SELECT max(salary) FROM employee AS e WHERE e.companyId=company.Id);
+         -> AND employee.salary=(SELECT MAX(salary) FROM employee AS e WHERE e.companyId=company.Id);
 +-------------+----------+
 | companyName | name     |
 +-------------+----------+
