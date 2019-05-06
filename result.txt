@@ -18,3 +18,22 @@ practice2
 | alibaba     | xiaohong |
 | tengxun     | xiaozhi  |
 +-------------+----------+
+
+practice3
+查询语句：mysql> SELECT c.companyName, AVG(e.salary) AS avgSalary
+         -> FROM employee AS e
+         -> INNER JOIN company AS c
+         -> ON e.companyId=c.Id
+         -> GROUP BY e.companyId
+         -> HAVING AVG(e.salary)=(
+         ->          SELECT AVG(salary) AS avgSalary
+         ->          FROM employee AS e2
+         ->          GROUP BY e2.companyId
+         ->          ORDER BY avgSalary DESC
+         ->          LIMIT 1
+         -> );
++-------------+-----------+
+| companyName | avgSalary |
++-------------+-----------+
+| tengxun     | 8000.0000 |
++-------------+-----------+
