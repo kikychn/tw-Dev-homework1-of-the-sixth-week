@@ -1,4 +1,5 @@
 practice1
+查询语句：SELECT * FROM employee WHERE name LIKE '%n%' AND salary>6000;
 +----+----------+------+--------+-----------+--------+
 | id | name     | age  | gender | companyId | salary |
 +----+----------+------+--------+-----------+--------+
